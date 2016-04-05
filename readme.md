@@ -64,8 +64,7 @@ with the highest number. `$LATEST` is treated as version `0`.
 
 Type: `string`
 
-[AWS Profile](http://docs.aws.amazon.com/AWSJavaScriptSDK/guide/node-configuring.html). The user related to the profile should have
-admin access to API Gateway and should be able to invoke `lambda:AddPermission`.
+[AWS Profile](http://docs.aws.amazon.com/AWSJavaScriptSDK/guide/node-configuring.html).
 
 Can be overridden globally with the `AWS_PROFILE` environment variable.
 
