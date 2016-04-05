@@ -1,6 +1,6 @@
 {
   "name": "lambda-update-alias",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Update or create a AWS lambda alias",
   "license": "MIT",
   "repository": "SamVerschueren/lambda-update-alias",
