@@ -1,0 +1,43 @@
+{
+  "name": "lambda-update-alias",
+  "version": "0.0.0",
+  "description": "Update or create a AWS lambda alias",
+  "license": "MIT",
+  "repository": "SamVerschueren/lambda-update-alias",
+  "author": {
+    "name": "Sam Verschueren",
+    "email": "sam.verschueren@gmail.com",
+    "url": "github.com/SamVerschueren"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "xo && nyc ava",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "files": [
+    "index.js",
+    "lib"
+  ],
+  "keywords": [
+    "aws",
+    "lambda",
+    "alias",
+    "update",
+    "create"
+  ],
+  "dependencies": {
+    "aws-sdk": "^2.3.0",
+    "object-assign": "^4.0.1",
+    "pify": "^2.3.0",
+    "pinkie-promise": "^2.0.0"
+  },
+  "devDependencies": {
+    "ava": "*",
+    "coveralls": "^2.11.9",
+    "nyc": "^6.1.1",
+    "sinon": "^1.17.3",
+    "xo": "*"
+  }
+}
