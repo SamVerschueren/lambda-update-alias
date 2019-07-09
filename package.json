@@ -7,7 +7,7 @@
   "author": {
     "name": "Sam Verschueren",
     "email": "sam.verschueren@gmail.com",
-    "url": "github.com/SamVerschueren"
+    "url": "https://github.com/SamVerschueren"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -15,6 +15,12 @@
   "scripts": {
     "test": "xo && nyc ava",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "ava": {
+    "files": [
+      "test/**/*.js",
+      "!test/fixtures/**/*.js"
+    ]
   },
   "files": [
     "index.js",
@@ -29,15 +35,14 @@
   ],
   "dependencies": {
     "aws-sdk": "^2.3.0",
-    "object-assign": "^4.0.1",
-    "pify": "^2.3.0",
-    "pinkie-promise": "^2.0.0"
+    "bluebird": "^3.5.5",
+    "object-assign": "^4.0.1"
   },
   "devDependencies": {
     "ava": "*",
-    "coveralls": "^2.11.9",
-    "nyc": "^6.1.1",
-    "sinon": "^1.17.3",
+    "coveralls": "^3.0.4",
+    "nyc": "^14.1.1",
+    "sinon": "^7.0.0",
     "xo": "*"
   }
 }

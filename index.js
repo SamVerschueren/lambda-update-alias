@@ -1,15 +1,15 @@
 'use strict';
-var path = require('path');
-var AWS = require('aws-sdk');
-var Promise = require('pinkie-promise');
-var utils = require('./lib/utils');
+const path = require('path');
+const AWS = require('aws-sdk');
+const Promise = require('bluebird');
+const utils = require('./lib/utils');
 
 module.exports = function (name, alias, opts) {
-	if (typeof name !== 'string') {
+	if (!name || typeof name !== 'string') {
 		return Promise.reject(new Error('Provide a AWS Lambda function name.'));
 	}
 
-	if (typeof alias !== 'string') {
+	if (!alias || typeof alias !== 'string') {
 		return Promise.reject(new Error('Provide an alias name.'));
 	}
 
@@ -20,7 +20,7 @@ module.exports = function (name, alias, opts) {
 
 	if (opts.awsProfile) {
 		// Set the `credentials` property if a profile is provided
-		var objectCredentials = {
+		const objectCredentials = {
 			profile: opts.awsProfile
 		};
 
@@ -32,9 +32,9 @@ module.exports = function (name, alias, opts) {
 	}
 
 	// Create a lambda object
-	var lambda = new AWS.Lambda();
+	const lambda = new AWS.Lambda();
 
-	var options = {
+	const options = {
 		FunctionName: name,
 		Name: alias
 	};

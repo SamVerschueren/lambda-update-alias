@@ -1,20 +1,21 @@
 import path from 'path';
 import test from 'ava';
 import sinon from 'sinon';
-import aws from './fixtures/aws';
 import utils from '../lib/utils';
-import m from '../';
+import aws from './fixtures/aws';
+
+import m from '..';
 
 test.before(() => {
 	sinon.stub(utils, 'updateOrCreate');
 });
 
-test('throw error if no lambda function name is provided', t => {
-	t.throws(m(), 'Provide a AWS Lambda function name.');
+test('throw error if no lambda function name is provided', async t => {
+	await t.throwsAsync(() => m(), 'Provide a AWS Lambda function name.');
 });
 
-test('throw error if no alias name is provided', t => {
-	t.throws(m('foo'), 'Provide an alias name.');
+test('throw error if no alias name is provided', async t => {
+	await t.throwsAsync(() => m('foo'), 'Provide an alias name.');
 });
 
 test('specify the aws profile', async t => {
@@ -39,7 +40,7 @@ test.serial('provide region property', async t => {
 
 test.serial('update or create the alias', async t => {
 	await m('foo', 'v1');
-	t.same(utils.updateOrCreate.lastCall.args[1], {
+	t.deepEqual(utils.updateOrCreate.lastCall.args[1], {
 		FunctionName: 'foo',
 		Name: 'v1'
 	});
@@ -47,7 +48,7 @@ test.serial('update or create the alias', async t => {
 
 test.serial('update or create the alias on a specific version', async t => {
 	await m('foo', 'v1', {version: '1'});
-	t.same(utils.updateOrCreate.lastCall.args[1], {
+	t.deepEqual(utils.updateOrCreate.lastCall.args[1], {
 		FunctionName: 'foo',
 		FunctionVersion: '1',
 		Name: 'v1'
